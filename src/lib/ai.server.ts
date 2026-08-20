@@ -1,4 +1,4 @@
-import { generateText, Output, streamText } from "ai";
+import { Output, streamText } from "ai";
 import { z } from "zod";
 import { AI_MODEL, createLovableAiGatewayProvider, requireGatewayKey } from "./ai-gateway.server";
 import {
@@ -104,5 +104,3 @@ export async function chatImpl(data: {
   });
   return { reply: await result.text };
 }
-
-void generateText;
