@@ -4,7 +4,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
-import ReactMarkdown from "react-markdown";
 import { runResearch } from "@/lib/ai.functions";
 import { PageHeader } from "@/components/page-header";
 import { OutputPanel } from "@/components/output-panel";
@@ -126,5 +125,3 @@ function ResearchPage() {
     </div>
   );
 }
-
-void ReactMarkdown;
