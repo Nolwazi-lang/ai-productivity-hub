@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "ai-productivity-hub",
+      "version": "0.1.0",
+      "title": "AI Productivity Hub"
+    },
+    "tools": [
+      {
+        "name": "generate_email",
+        "title": "Generate business email",
+        "description": "Draft a ready-to-send business email from raw context, calibrated to a tone, audience and length.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "context": {
+              "type": "string",
+              "description": "What the email needs to say, plus any relevant background."
+            },
+            "tone": {
+              "type": "string",
+              "description": "Desired tone, e.g. formal, friendly, direct, apologetic."
+            },
+            "audience": {
+              "type": "string",
+              "description": "Who receives it, e.g. executive team, client, direct report."
+            },
+            "length": {
+              "type": "string",
+              "description": "Desired length, e.g. short, medium, detailed."
+            }
+          },
+          "required": [
+            "context",
+            "tone",
+            "audience",
+            "length"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "summarize_meeting_notes",
+        "title": "Summarize meeting notes",
+        "description": "Turn raw meeting notes or a transcript into a summary, key points, owned action items and deadlines.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "notes": {
+              "type": "string",
+              "description": "Raw meeting notes or transcript text."
+            }
+          },
+          "required": [
+            "notes"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "plan_tasks",
+        "title": "Prioritize and schedule tasks",
+        "description": "Turn a messy list of work into P0-P2 prioritized tasks with estimates and time blocks inside a working window.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "tasks": {
+              "type": "string",
+              "description": "The raw list of work items, one per line."
+            },
+            "workingHours": {
+              "type": "string",
+              "description": "Working window, e.g. '09:00 - 17:00'."
+            }
+          },
+          "required": [
+            "tasks",
+            "workingHours"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "research_briefing",
+        "title": "Research briefing",
+        "description": "Produce a professional markdown briefing on a topic: executive summary, key insights, risks and next steps.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": false,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "topic": {
+              "type": "string",
+              "description": "The research question or topic."
+            },
+            "depth": {
+              "type": "string",
+              "description": "How deep to go, e.g. quick overview, standard, deep dive."
+            }
+          },
+          "required": [
+            "topic",
+            "depth"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
