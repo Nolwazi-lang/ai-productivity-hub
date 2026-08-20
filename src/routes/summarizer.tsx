@@ -113,7 +113,7 @@ function SummarizerPage() {
                       <span className="font-mono text-[11px] text-muted-foreground">{a.owner}</span>
                       <Badge
                         variant="outline"
-                        className={priorityTone[a.priority] ?? priorityTone.low}
+                        className={priorityTone[a.priority] ?? priorityTone["low"]}
                       >
                         {a.priority}
                       </Badge>

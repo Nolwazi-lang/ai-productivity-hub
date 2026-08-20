@@ -34,8 +34,8 @@ export const Route = createFileRoute("/email")({
   component: EmailPage,
 });
 
-const tones = ["Professional", "Direct", "Warm", "Persuasive", "Apologetic", "Formal"];
-const audiences = [
+const tones: string[] = ["Professional", "Direct", "Warm", "Persuasive", "Apologetic", "Formal"];
+const audiences: string[] = [
   "Executive stakeholders",
   "Direct reports",
   "Cross-functional peers",
@@ -43,13 +43,13 @@ const audiences = [
   "Vendor or partner",
   "Job candidate",
 ];
-const lengths = ["Short (under 100 words)", "Standard (100-180 words)", "Detailed (200+ words)"];
+const lengths: string[] = ["Short (under 100 words)", "Standard (100-180 words)", "Detailed (200+ words)"];
 
 function EmailPage() {
   const [context, setContext] = useState("");
-  const [tone, setTone] = useState(tones[0]);
-  const [audience, setAudience] = useState(audiences[0]);
-  const [length, setLength] = useState(lengths[1]);
+  const [tone, setTone] = useState(tones[0]!);
+  const [audience, setAudience] = useState(audiences[0]!);
+  const [length, setLength] = useState(lengths[1]!);
 
   const fn = useServerFn(generateEmail);
   const mutation = useMutation({

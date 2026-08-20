@@ -35,7 +35,7 @@ export const Route = createFileRoute("/research")({
   component: ResearchPage,
 });
 
-const depths = [
+const depths: string[] = [
   "Quick scan — orient me in 60 seconds",
   "Standard briefing — balanced depth",
   "Deep dive — thorough analysis",
@@ -43,7 +43,7 @@ const depths = [
 
 function ResearchPage() {
   const [topic, setTopic] = useState("");
-  const [depth, setDepth] = useState(depths[1]);
+  const [depth, setDepth] = useState(depths[1]!);
   const fn = useServerFn(runResearch);
   const mutation = useMutation({
     mutationFn: (input: { topic: string; depth: string }) => fn({ data: input }),

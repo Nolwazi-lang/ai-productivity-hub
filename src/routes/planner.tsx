@@ -115,7 +115,7 @@ function PlannerPage() {
                         <p className="text-sm font-medium">{t.title}</p>
                         <Badge
                           variant="outline"
-                          className={priorityTone[t.priority] ?? priorityTone.P2}
+                          className={priorityTone[t.priority] ?? priorityTone["P2"]}
                         >
                           {t.priority}
                         </Badge>
