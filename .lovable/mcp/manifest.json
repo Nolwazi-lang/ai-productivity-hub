@@ -53,7 +53,19 @@
             "length"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "description": "The drafted email body."
+            }
+          },
+          "required": [
+            "email"
+          ]
+        }
       },
       {
         "name": "summarize_meeting_notes",
@@ -77,7 +89,72 @@
             "notes"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "summary": {
+              "type": "string"
+            },
+            "keyPoints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "actionItems": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "task": {
+                    "type": "string"
+                  },
+                  "owner": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "string",
+                    "enum": [
+                      "high",
+                      "medium",
+                      "low"
+                    ]
+                  }
+                },
+                "required": [
+                  "task",
+                  "owner",
+                  "priority"
+                ]
+              }
+            },
+            "deadlines": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "type": "string"
+                  },
+                  "due": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "item",
+                  "due"
+                ]
+              }
+            }
+          },
+          "required": [
+            "summary",
+            "keyPoints",
+            "actionItems",
+            "deadlines"
+          ]
+        }
       },
       {
         "name": "plan_tasks",
@@ -106,7 +183,54 @@
             "workingHours"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "focusNote": {
+              "type": "string"
+            },
+            "tasks": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "rationale": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "string",
+                    "enum": [
+                      "P0",
+                      "P1",
+                      "P2"
+                    ]
+                  },
+                  "estimatedMinutes": {
+                    "type": "number"
+                  },
+                  "scheduled": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title",
+                  "rationale",
+                  "priority",
+                  "estimatedMinutes",
+                  "scheduled"
+                ]
+              }
+            }
+          },
+          "required": [
+            "focusNote",
+            "tasks"
+          ]
+        }
       },
       {
         "name": "research_briefing",
@@ -135,7 +259,19 @@
             "depth"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "briefing": {
+              "type": "string",
+              "description": "The markdown briefing."
+            }
+          },
+          "required": [
+            "briefing"
+          ]
+        }
       }
     ]
   }

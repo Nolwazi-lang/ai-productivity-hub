@@ -10,6 +10,18 @@ export default defineTool({
   inputSchema: {
     notes: z.string().describe("Raw meeting notes or transcript text."),
   },
+  outputSchema: {
+    summary: z.string(),
+    keyPoints: z.array(z.string()),
+    actionItems: z.array(
+      z.object({
+        task: z.string(),
+        owner: z.string(),
+        priority: z.enum(["high", "medium", "low"]),
+      }),
+    ),
+    deadlines: z.array(z.object({ item: z.string(), due: z.string() })),
+  },
   annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
   handler: async ({ notes }) => {
     const summary = await summarizeNotesImpl({ notes });

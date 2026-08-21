@@ -11,6 +11,7 @@ export default defineTool({
     topic: z.string().describe("The research question or topic."),
     depth: z.string().describe("How deep to go, e.g. quick overview, standard, deep dive."),
   },
+  outputSchema: { briefing: z.string().describe("The markdown briefing.") },
   annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
   handler: async ({ topic, depth }) => {
     const { briefing } = await researchImpl({ topic, depth });
