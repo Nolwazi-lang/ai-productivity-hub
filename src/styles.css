@@ -172,13 +172,24 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    letter-spacing: -0.005em;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: var(--font-sans);
   }
 
   h1,
   h2,
   h3 {
-    letter-spacing: -0.015em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
   }
 }
 
