@@ -1,5 +1,11 @@
 # AI Productivity Hub
 
+## Live Demo
+
+🚀 https://ai-workmate-buddy-59.lovable.app/
+ 
+Build a modern, responsive web application called "AI Workplace Productivity Assistant" that helps professionals automate daily work tasks using AI.
+
 An intelligent workplace productivity platform designed to help professionals work smarter, collaborate effectively, and accelerate personal and career growth through AI-powered tools.
 
 ## Overview
