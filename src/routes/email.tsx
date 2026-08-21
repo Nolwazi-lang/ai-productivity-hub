@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
 import { generateEmail } from "@/lib/ai.functions";
+import { AUDIENCES, LENGTHS, TONES, usePreferences } from "@/lib/preferences";
 import { PageHeader } from "@/components/page-header";
 import { OutputPanel } from "@/components/output-panel";
 import { Button } from "@/components/ui/button";
@@ -34,22 +35,23 @@ export const Route = createFileRoute("/email")({
   component: EmailPage,
 });
 
-const tones: string[] = ["Professional", "Direct", "Warm", "Persuasive", "Apologetic", "Formal"];
-const audiences: string[] = [
-  "Executive stakeholders",
-  "Direct reports",
-  "Cross-functional peers",
-  "External client",
-  "Vendor or partner",
-  "Job candidate",
-];
-const lengths: string[] = ["Short (under 100 words)", "Standard (100-180 words)", "Detailed (200+ words)"];
+const tones: readonly string[] = TONES;
+const audiences: readonly string[] = AUDIENCES;
+const lengths: readonly string[] = LENGTHS;
 
 function EmailPage() {
+  const { preferences, loaded } = usePreferences();
   const [context, setContext] = useState("");
   const [tone, setTone] = useState(tones[0]!);
   const [audience, setAudience] = useState(audiences[0]!);
   const [length, setLength] = useState(lengths[1]!);
+
+  useEffect(() => {
+    if (!loaded) return;
+    setTone(preferences.tone);
+    setAudience(preferences.audience);
+    setLength(preferences.length);
+  }, [loaded, preferences]);
 
   const fn = useServerFn(generateEmail);
   const mutation = useMutation({

@@ -16,6 +16,7 @@ import { Route as EmailRouteImport } from './routes/email'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PlannerRouteImport } from './routes/planner'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SummarizerRouteImport } from './routes/summarizer'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
@@ -57,6 +58,11 @@ const ResearchRoute = ResearchRouteImport.update({
   path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SummarizerRoute = SummarizerRouteImport.update({
   id: '/summarizer',
   path: '/summarizer',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
   '/summarizer': typeof SummarizerRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
   '/summarizer': typeof SummarizerRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/planner': typeof PlannerRoute
   '/research': typeof ResearchRoute
+  '/settings': typeof SettingsRoute
   '/summarizer': typeof SummarizerRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/planner'
     | '/research'
+    | '/settings'
     | '/summarizer'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/planner'
     | '/research'
+    | '/settings'
     | '/summarizer'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/planner'
     | '/research'
+    | '/settings'
     | '/summarizer'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
@@ -182,6 +194,7 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PlannerRoute: typeof PlannerRoute
   ResearchRoute: typeof ResearchRoute
+  SettingsRoute: typeof SettingsRoute
   SummarizerRoute: typeof SummarizerRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
@@ -240,6 +253,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/summarizer': {
       id: '/summarizer'
       path: '/summarizer'
@@ -286,6 +306,7 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PlannerRoute: PlannerRoute,
   ResearchRoute: ResearchRoute,
+  SettingsRoute: SettingsRoute,
   SummarizerRoute: SummarizerRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:

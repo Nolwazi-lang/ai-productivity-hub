@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Clock, Target } from "lucide-react";
 import { toast } from "sonner";
 import { planTasks } from "@/lib/ai.functions";
+import { usePreferences } from "@/lib/preferences";
 import { PageHeader } from "@/components/page-header";
 import { OutputPanel } from "@/components/output-panel";
 import { Button } from "@/components/ui/button";
@@ -36,8 +37,14 @@ const priorityTone: Record<string, string> = {
 };
 
 function PlannerPage() {
+  const { preferences, loaded } = usePreferences();
   const [tasks, setTasks] = useState("");
   const [workingHours, setWorkingHours] = useState("09:00 - 17:00");
+
+  useEffect(() => {
+    if (loaded) setWorkingHours(preferences.workingHours);
+  }, [loaded, preferences]);
+
   const fn = useServerFn(planTasks);
   const mutation = useMutation({
     mutationFn: (input: { tasks: string; workingHours: string }) => fn({ data: input }),
