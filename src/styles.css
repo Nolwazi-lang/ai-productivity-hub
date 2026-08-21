@@ -189,3 +189,11 @@
   text-transform: uppercase;
   color: var(--color-muted-foreground);
 }
+
+@utility bg-gradient-primary {
+  background-image: var(--gradient-primary);
+}
+
+@utility bg-gradient-subtle {
+  background-image: var(--gradient-subtle);
+}
