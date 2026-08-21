@@ -1,28 +1,70 @@
 # AI Productivity Hub
 
-Build a modern, responsive web application called “AI Workplace Productivity Assistant” that helps professionals automate daily work tasks using AI. The application should have a clean, professional UI with a dashboard layout, sidebar navigation, and interactive components. 
-Core Features: 
-Smart Email Generator (tone + audience-based)  
-Meeting Notes Summarizer (key points, actions, deadlines)  
-AI Task Planner (prioritization + scheduling)
+An intelligent workplace productivity platform designed to help professionals work smarter, collaborate effectively, and accelerate personal and career growth through AI-powered tools.
 
-This project was built with [Lovable](https://lovable.dev).
+## Overview
 
-## Build with Lovable
+AI Productivity Hub combines productivity, learning, collaboration, and career development into a single modern workspace. The platform provides AI-assisted tools that streamline daily work activities while helping users achieve their professional goals.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/812c6ad9-4887-4023-9f49-cf5720376f65).
+## Features
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+### Welcome Experience
+- Modern responsive welcome page
+- Orange-themed branded user interface
+- Interactive hero section
+- Feature overview cards
+- Smooth navigation to dashboard
 
-## Development
+### AI Productivity Tools
+- Smart Email Generator
+- Meeting Notes Summarizer
+- AI Task Planner
+- Goal Tracking Assistant
+- Productivity Insights
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+### Learning & Career Development
+- AI Learning Assistant
+- Skills Development Resources
+- Career Growth Tracking
+- Professional Development Planning
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+### Team Collaboration
+- Team Communication Support
+- Shared Productivity Resources
+- Collaboration Workspaces
+
+## Design
+
+The platform follows a modern SaaS-inspired design with:
+
+- Orange brand identity
+- Responsive layout
+- Dashboard navigation
+- Interactive components
+- Accessibility-friendly UI
+- Mobile-first experience
+
+## Technology Stack
+
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Supabase
+- Lovable
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+```bash
+git clone <repository-url>
+cd ai-workmate-buddy-59
+npm install
 npm run dev
-```
