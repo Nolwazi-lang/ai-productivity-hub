@@ -13,6 +13,7 @@ export default defineTool({
     audience: z.string().describe("Who receives it, e.g. executive team, client, direct report."),
     length: z.string().describe("Desired length, e.g. short, medium, detailed."),
   },
+  outputSchema: { email: z.string().describe("The drafted email body.") },
   annotations: { readOnlyHint: true, idempotentHint: false, openWorldHint: false },
   handler: async ({ context, tone, audience, length }) => {
     const { email } = await generateEmailImpl({ context, tone, audience, length });
