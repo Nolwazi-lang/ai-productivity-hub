@@ -71,6 +71,7 @@
   --color-danger: var(--danger);
   --shadow-card: var(--shadow-card);
   --shadow-panel: var(--shadow-panel);
+  --color-primary-hover: var(--primary-hover);
 }
 
 :root {
