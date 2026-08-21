@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
 import { runResearch } from "@/lib/ai.functions";
+import { DEPTHS, usePreferences } from "@/lib/preferences";
 import { PageHeader } from "@/components/page-header";
 import { OutputPanel } from "@/components/output-panel";
 import { Button } from "@/components/ui/button";
@@ -35,15 +36,17 @@ export const Route = createFileRoute("/research")({
   component: ResearchPage,
 });
 
-const depths: string[] = [
-  "Quick scan — orient me in 60 seconds",
-  "Standard briefing — balanced depth",
-  "Deep dive — thorough analysis",
-];
+const depths: readonly string[] = DEPTHS;
 
 function ResearchPage() {
+  const { preferences, loaded } = usePreferences();
   const [topic, setTopic] = useState("");
   const [depth, setDepth] = useState(depths[1]!);
+
+  useEffect(() => {
+    if (loaded) setDepth(preferences.depth);
+  }, [loaded, preferences]);
+
   const fn = useServerFn(runResearch);
   const mutation = useMutation({
     mutationFn: (input: { topic: string; depth: string }) => fn({ data: input }),
